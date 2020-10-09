@@ -2,7 +2,7 @@
   <div id="app">
     <nav>
       <div class="nav-wrapper blue darken-1">
-        <a href="#" class="brand-logo center">Cliente</a>
+        <a href="#" class="brand-logo center">Clientes-Locadora de Filmes</a>
       </div>
     </nav>
 
@@ -30,7 +30,7 @@
             <td>{{ cliente.id }}</td>
             <td>{{ cliente.nome }}</td>
             <td>{{ cliente.cpf }}</td>
-            <td>{{ cliente.datadenascimento}}</td>
+            <td>{{ cliente.dataDeNasc}}</td>
           </tr>
         </tbody>
       </table>
@@ -49,7 +49,7 @@ export default {
         id: "",
         nome: "",
         cpf: "",
-        datadenascimento: "",
+        dataDeNasc: "",
       },
       clientes: [],
       errors: [],

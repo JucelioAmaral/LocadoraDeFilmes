@@ -1,19 +1,19 @@
 import { http } from "./config";
 
 export default {
-  salvar: (category) => {
-    return http.post("category", category);
+  salvar: (cliente) => {
+    return http.post("​/api​/cliente​/AddCliente", cliente);
   },
 
-  atualizar: (category) => {
-    return http.put("category", category);
+  atualizar: (cliente) => {
+    return http.put("​/api​/cliente​/UpdateCliente​/", cliente);
   },
 
   listar: () => {
-    return http.get("category");
+    return http.get("/api/cliente/GetClient");
   },
 
-  apagar: (category) => {
-    return http.delete("category", { data: category });
+  apagar: (cliente) => {
+    return http.delete("/api/cliente/RemoveCLiente/", { data: cliente });
   },
 };
