@@ -8,9 +8,9 @@ namespace LocadoraDeFilmes.Repository
 {
     public interface IRelatoriosRepository
     {
-        public IEnumerable<Filme> GetTopFilmesAlugados();
+        public IEnumerable<Filme> GetTop5FilmesAlugados();
 
-        public IEnumerable<Filme> GetTopFilmesMenosAlugados();
+        public IEnumerable<Filme> GetTop3FilmesMenosAlugados();
 
         public IEnumerable<Cliente> GetSegundoClienteMaisAlugou();
     }

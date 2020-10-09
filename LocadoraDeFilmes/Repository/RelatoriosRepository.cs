@@ -18,17 +18,17 @@ namespace LocadoraDeFilmes.Repository
             _connectionString = configuration.GetConnectionString("Default");
         }
 
-        public IEnumerable<Filme> GetTopFilmesAlugados()
+        public IEnumerable<Filme> GetTop5FilmesAlugados()
         {
             using var connection = new SqlConnection(_connectionString);
-            var data = connection.Query<Filme>("select * from tblFilme where id in(select top 5 IdFilme from tblLocacao where DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdFilme having COUNT(IdFilme) > 0)");
+            var data = connection.Query<Filme>("SELECT * FROM tblFilme WHERE id in(select top 5 IdFilme FROM tblLocacao WHERE DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdFilme having COUNT(IdFilme) > 0)");
             return data;
         }
 
-        public IEnumerable<Filme> GetTopFilmesMenosAlugados()
+        public IEnumerable<Filme> GetTop3FilmesMenosAlugados()
         {
             using var connection = new SqlConnection(_connectionString);
-            var data = connection.Query<Filme>("select * from tblFilme where id in(select top 3 IdFilme from tblLocacao where DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdFilme having COUNT(IdFilme) > 0 order by IdFilme desc)");
+            var data = connection.Query<Filme>("SELECT * FROM tblFilme WHERE id in(select top 3 IdFilme FROM tblLocacao WHERE DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdFilme having COUNT(IdFilme) > 0 order by IdFilme desc)");
             return data;
         }
 
@@ -36,7 +36,7 @@ namespace LocadoraDeFilmes.Repository
         public IEnumerable<Cliente> GetSegundoClienteMaisAlugou()
         {
             using var connection = new SqlConnection(_connectionString);
-            var data = connection.Query<Cliente>("select * from tblCliente where id in( select top 2  IdCliente from tblLocacao where DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdCliente having COUNT(IdCliente) > 0 )");
+            var data = connection.Query<Cliente>("SELECT * FROM tblCliente WHERE id in( select top 2  IdCliente FROM tblLocacao WHERE DataLocaccao BETWEEN DATEADD(Year,-1,GETDATE()) AND GetDATE() group by IdCliente having COUNT(IdCliente) > 0 )");
             return data;
         }
     }

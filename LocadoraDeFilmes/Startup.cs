@@ -39,7 +39,7 @@ namespace LocadoraDeFilmes
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "Project Onion",
+                        Title = "Locadora de filmes",
                         Version = "v1",
                         Description = "API REST criada com o ASP.NET Core 3.1",
                         Contact = new OpenApiContact

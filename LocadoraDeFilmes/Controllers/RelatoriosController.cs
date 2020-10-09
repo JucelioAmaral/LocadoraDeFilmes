@@ -33,10 +33,10 @@ namespace LocadoraDeFilmes.Controllers
         {
             int idClienteComAtraso;
             bool foraDoPrazo = false;
-            var locacaoes = context.tblLocacao.ToList();
+            var listLocacaoes = context.tblLocacao.ToList();
             var clientes = new List<Cliente>();
 
-            foreach (var locacao in locacaoes)
+            foreach (var locacao in listLocacaoes)
             {
                 var filme = context.tblFilme.FirstOrDefault(f => f.Id == locacao.IdFilme);
                 if (filme.Lancamento == 1)
@@ -55,51 +55,49 @@ namespace LocadoraDeFilmes.Controllers
                 }
             }
 
-            //clientes = context.Clientes.FirstOrDefault(c => c.Id == idClienteComAtraso);
-
             return context.tblCliente.ToList();
         }
 
 
         [HttpGet]
-        [Route("GetFilmesNaoAlugados")]
-        public async Task<List<Filme>> GetFilmesNaoAlugados([FromServices] DataContext context)
+        [Route("GetFilmesNuncaAlugados")]
+        public async Task<List<Filme>> GetFilmesNuncaAlugados([FromServices] DataContext context)
         {
-            var filmes = context.tblFilme.ToList();
-            var FilmesNaoAlugados = new List<Filme>();
+            var listFilmes = context.tblFilme.ToList();
+            var FilmesNuncaAlugados = new List<Filme>();
             var locacoes = context.tblLocacao.ToList();
 
 
-            foreach (var filme in filmes)
+            foreach (var filme in listFilmes)
             {
                 foreach (var locacao in locacoes)
                 {
                     if (filme.Id != locacao.IdFilme)
                     {
-                        FilmesNaoAlugados.Add(filme);
+                        FilmesNuncaAlugados.Add(filme);
                     }
                 }
             }
 
-            return FilmesNaoAlugados;
+            return FilmesNuncaAlugados;
         }
 
 
         [HttpGet]
-        [Route("GetTopFilmesAlugados")]
-        public IActionResult GetTopFilmesAlugados([FromServices] DataContext context)
+        [Route("GetTop5FilmesAlugados")]
+        public IActionResult GetTop5FilmesAlugados([FromServices] DataContext context)
         {
 
-            var data = _relatoriosRepository.GetTopFilmesAlugados();
+            var data = _relatoriosRepository.GetTop5FilmesAlugados();
             return Ok(data);
         }
 
         [HttpGet]
-        [Route("GetTopFilmesMenosAlugados")]
-        public IActionResult GetTopFilmesMenosAlugados([FromServices] DataContext context)
+        [Route("GetTop3FilmesMenosAlugados")]
+        public IActionResult GetTop3FilmesMenosAlugados([FromServices] DataContext context)
         {
 
-            var data = _relatoriosRepository.GetTopFilmesMenosAlugados();
+            var data = _relatoriosRepository.GetTop3FilmesMenosAlugados();
             return Ok(data);
         }
 
