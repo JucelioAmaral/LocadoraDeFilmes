@@ -8,15 +8,20 @@ Front-End utilizando Vue.js.
 
 1. [Node.js](https://nodejs.org/en/download/)
 2. [ASP.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+3. [Visual Studio 2019](https://visualstudio.microsoft.com/pt-br/vs/)
 
-## Como rodar?
+## Como baixar o código
 
 git clone https://github.com/JucelioAmaral/LocadoraDeFilmes.git
 
+## Como configurar?
 
-
-
-
+1. Abrir a solution;
+2. Configurar o arquivo "appsettings.json" com a connectionString, apontando para o banco SQL server;
+3. Abrir o Console do Visual Studio;
+4. Executar o comando: Add-Migration InitialCreate;
+5. Update-Database;
+6. Executar a API pelo Visual Studio;
 
 **API roda na porta https://localhost:5001/swagger/index.html**
 
