@@ -25,20 +25,6 @@ namespace LocadoraDeFilmes.Controllers
 
             if (ModelState.IsValid)
             {
-
-                //var filme = context.Filmes.FirstOrDefault(f => f.Id == model.Id_Filme);
-
-                //if(filme.Lancamento == 1)
-                //{
-                //    dataDevolucao = model.DataLocacao.AddDays(2);
-                //}
-                //else
-                //{
-                //    dataDevolucao = model.DataLocacao.AddDays(3);
-                //}
-
-                //model.DataDevolucao = dataDevolucao;
-
                 context.tblLocacao.Add(model);
                 await context.SaveChangesAsync();
                 return model;
@@ -84,6 +70,6 @@ namespace LocadoraDeFilmes.Controllers
             {
 
             }
-        } 
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LocadoraDeFilmes.Data;
+using LocadoraDeFilmes.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,7 @@ namespace LocadoraDeFilmes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IRelatoriosRepository, RelatoriosRepository>();
             services.AddControllers();
             services.AddDbContext<DataContext>(
                 context => context.UseSqlServer(Configuration.GetConnectionString("Default"))
@@ -60,7 +61,7 @@ namespace LocadoraDeFilmes
             }
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My GitHub Library V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Locadora de Filmes V1");
             });
 
             app.UseHttpsRedirection();

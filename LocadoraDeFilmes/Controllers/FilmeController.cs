@@ -11,8 +11,7 @@ namespace LocadoraDeFilmes.Controllers
     public class FilmeController : ControllerBase
     {
         [HttpGet]
-        [Route("GetFilme")]
-                
+        [Route("GetFilme")]                
 
         public async Task<List<Filme>> GetFilme([FromServices] DataContext context)
         {
