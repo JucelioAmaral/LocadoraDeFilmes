@@ -25,3 +25,10 @@ git clone https://github.com/JucelioAmaral/LocadoraDeFilmes.git
 
 **API roda na porta https://localhost:5001/swagger/index.html**
 
+## Como executar o client?
+
+1. Abrir o CMD na pasta da solution;
+2. cd LocadoraDeFilmes.app;
+3. Execuatr no CMD o comando: npm install;
+4. Execuatr no CMD o comando: npm run serve.
+
