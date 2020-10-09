@@ -18,25 +18,30 @@ namespace LocadoraDeFilmes.Controller
 
         public async Task<List<Cliente>> GetCliente([FromServices] DataContext context)
         {
-            return context.Clientes.ToList();
+            return context.tblCliente.ToList();
         }
 
         [HttpPost]
         [Route("AddCliente")]
         public async Task<ActionResult<Cliente>> AddCliente([FromServices] DataContext context, [FromBody] Cliente modelCliente)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-                context.Clientes.Add(modelCliente);
-                await context.SaveChangesAsync();
-                return modelCliente;
+                if (ModelState.IsValid)
+                {
+                    context.tblCliente.Add(modelCliente);
+                    await context.SaveChangesAsync();
+                    return modelCliente;
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
             }
-            else
+            catch(Exception e)
             {
-                return BadRequest(ModelState);
+                return null;
             }
-
         }
         [HttpDelete]
         [Route("RemoveCLiente/{Id}")]
@@ -44,8 +49,8 @@ namespace LocadoraDeFilmes.Controller
         {
             try
             {
-                var filme = context.Clientes.FirstOrDefault(e => e.Id == Id);
-                context.Clientes.Remove(filme);
+                var filme = context.tblCliente.FirstOrDefault(e => e.Id == Id);
+                context.tblCliente.Remove(filme);
                 await context.SaveChangesAsync();
             }
             catch (Exception e)
@@ -59,12 +64,12 @@ namespace LocadoraDeFilmes.Controller
         {
             try
             {
-                var cliente = context.Clientes.FirstOrDefault(e => e.Id == Id);
+                var cliente = context.tblCliente.FirstOrDefault(e => e.Id == Id);
                 cliente.Nome = modelCliente.Nome;
                 cliente.CPF = modelCliente.CPF;
                 cliente.DataDeNasc = modelCliente.DataDeNasc;
 
-                context.Clientes.Update(cliente);
+                context.tblCliente.Update(cliente);
                 await context.SaveChangesAsync();
             }
             catch (Exception e)

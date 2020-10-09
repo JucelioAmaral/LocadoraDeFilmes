@@ -8,6 +8,16 @@ namespace LocadoraDeFilmes.Entities
 {
     public class Filme
     {
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Titulo { get; set; }
+        [Required]
+        public int ClassificacaoIndicativa { get; set; }
+        public Byte Lancamento { get; set; } = 0;
+        //public IEnumerable<Filme> ListFilmes { get; set; }
+
         public Filme()
         {
 
@@ -19,18 +29,5 @@ namespace LocadoraDeFilmes.Entities
             ClassificacaoIndicativa = classficacaoIndicativa;
             Lancamento = lancamento;
         }
-        [Required]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Titulo { get; set; }
-
-        [Required]
-        public int ClassificacaoIndicativa { get; set; }
-
-        public Byte Lancamento { get; set; } = 0;
-
-        public IEnumerable<Filme> Filmes { get; set; }
     }
 }

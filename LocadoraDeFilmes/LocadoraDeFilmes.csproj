@@ -5,14 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201008012130_InitialCreate.cs" />
-    <Compile Remove="Migrations\20201008012130_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20201008012639_InitialCreate.cs" />
-    <Compile Remove="Migrations\20201008012639_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201009000945_InitialCreate.cs" />
+    <Compile Remove="Migrations\20201009000945_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201009001207_InitialCreate.cs" />
+    <Compile Remove="Migrations\20201009001207_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201009001442_ClienteCreate.cs" />
+    <Compile Remove="Migrations\20201009001442_ClienteCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 

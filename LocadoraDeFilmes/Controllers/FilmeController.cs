@@ -16,7 +16,7 @@ namespace LocadoraDeFilmes.Controllers
 
         public async Task<List<Filme>> GetFilme([FromServices] DataContext context)
         {
-            return context.Filmes.ToList();
+            return context.tblFilme.ToList();
         }
 
         [HttpPost]
@@ -25,7 +25,7 @@ namespace LocadoraDeFilmes.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Filmes.Add(model);
+                context.tblFilme.Add(model);
                 await context.SaveChangesAsync();
                 return model;
             }
@@ -41,8 +41,8 @@ namespace LocadoraDeFilmes.Controllers
         {
             try
             {
-                var filme = context.Filmes.FirstOrDefault(e => e.Id == Id);
-                context.Filmes.Remove(filme);
+                var filme = context.tblFilme.FirstOrDefault(e => e.Id == Id);
+                context.tblFilme.Remove(filme);
                 await context.SaveChangesAsync();
             }
             catch (Exception e)
@@ -57,12 +57,12 @@ namespace LocadoraDeFilmes.Controllers
         {
             try
             {
-                var filme = context.Filmes.FirstOrDefault(e => e.Id == Id);
+                var filme = context.tblFilme.FirstOrDefault(e => e.Id == Id);
                 filme.Titulo = model.Titulo;
                 filme.ClassificacaoIndicativa = model.ClassificacaoIndicativa;
                 filme.Lancamento = model.Lancamento;
 
-                context.Filmes.Update(filme);
+                context.tblFilme.Update(filme);
                 await context.SaveChangesAsync();
             }
             catch (Exception e)

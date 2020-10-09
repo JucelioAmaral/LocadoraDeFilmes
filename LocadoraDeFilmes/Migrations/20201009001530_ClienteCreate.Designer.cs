@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeFilmes.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201008014204_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201009001530_ClienteCreate")]
+    partial class ClienteCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,9 +33,6 @@ namespace LocadoraDeFilmes.Migrations
                         .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
-                    b.Property<int?>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataDeNasc")
                         .HasColumnType("datetime2");
 
@@ -46,9 +43,7 @@ namespace LocadoraDeFilmes.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("Clientes");
+                    b.ToTable("tblCliente");
                 });
 
             modelBuilder.Entity("LocadoraDeFilmes.Entities.Filme", b =>
@@ -61,9 +56,6 @@ namespace LocadoraDeFilmes.Migrations
                     b.Property<int>("ClassificacaoIndicativa")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FilmeId")
-                        .HasColumnType("int");
-
                     b.Property<byte>("Lancamento")
                         .HasColumnType("tinyint");
 
@@ -74,47 +66,7 @@ namespace LocadoraDeFilmes.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FilmeId");
-
-                    b.ToTable("Filmes");
-                });
-
-            modelBuilder.Entity("LocadoraDeFilmes.Entities.Locacao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DataDevolucao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataLocaccao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdFilme")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Locacoes");
-                });
-
-            modelBuilder.Entity("LocadoraDeFilmes.Entities.Cliente", b =>
-                {
-                    b.HasOne("LocadoraDeFilmes.Entities.Cliente", null)
-                        .WithMany("CLientes")
-                        .HasForeignKey("ClienteId");
-                });
-
-            modelBuilder.Entity("LocadoraDeFilmes.Entities.Filme", b =>
-                {
-                    b.HasOne("LocadoraDeFilmes.Entities.Filme", null)
-                        .WithMany("Filmes")
-                        .HasForeignKey("FilmeId");
+                    b.ToTable("tblFilme");
                 });
 #pragma warning restore 612, 618
         }
