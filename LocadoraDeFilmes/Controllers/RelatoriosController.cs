@@ -1,4 +1,5 @@
-﻿using LocadoraDeFilmes.Data;
+﻿using Dapper;
+using LocadoraDeFilmes.Data;
 using LocadoraDeFilmes.Entities;
 using LocadoraDeFilmes.Repository;
 using Microsoft.AspNetCore.Components;
@@ -31,7 +32,7 @@ namespace LocadoraDeFilmes.Controllers
         [Route("GetClienteComAtraso")]
         public async Task<List<Cliente>> GetClienteComAtraso([FromServices] DataContext context)
         {
-            int idClienteComAtraso;
+            int idClienteComAtraso = 0;
             bool foraDoPrazo = false;
             var listLocacaoes = context.tblLocacao.ToList();
             var clientes = new List<Cliente>();
@@ -55,7 +56,10 @@ namespace LocadoraDeFilmes.Controllers
                 }
             }
 
-            return context.tblCliente.ToList();
+            //return context.tblCliente.ToList();
+            clientes = context.tblCliente.ToList();
+            clientes.FirstOrDefault(c => c.Id == idClienteComAtraso);
+            return clientes;            
         }
 
 
