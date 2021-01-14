@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeFilmes.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201009001530_ClienteCreate")]
-    partial class ClienteCreate
+    [Migration("20201214194121_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,30 @@ namespace LocadoraDeFilmes.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblFilme");
+                });
+
+            modelBuilder.Entity("LocadoraDeFilmes.Entities.Locacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("DataDevolucao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataLocaccao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCliente")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdFilme")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblLocacao");
                 });
 #pragma warning restore 612, 618
         }
